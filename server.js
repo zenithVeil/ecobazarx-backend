@@ -24,6 +24,9 @@ app.get("/api/protected", protect, (req, res) => {
 
 const productRoutes = require("./routes/productRoutes");
 app.use("/api/products", productRoutes);
+app.use('/api/recommendations', recommendationRoutes);
+
+const recommendationRoutes = require('./routes/recommendationRoutes');
 
 app.listen(process.env.PORT, () =>
     console.log(`Server running on port ${process.env.PORT}`)
