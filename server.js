@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const predictionRoutes = require('./routes/predictionRoutes');
 
 dotenv.config();
 connectDB();
@@ -31,3 +32,10 @@ const recommendationRoutes = require('./routes/recommendationRoutes');
 app.listen(process.env.PORT, () =>
     console.log(`Server running on port ${process.env.PORT}`)
 );
+// Add this with the other requires
+const activityRoutes = require('./routes/activityRoutes');
+
+// Add this with the other app.use() calls
+app.use('/api/activity', activityRoutes);
+
+app.use('/api/predict', predictionRoutes);
